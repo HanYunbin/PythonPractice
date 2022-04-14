@@ -1,0 +1,15 @@
+num = 1
+
+while num < 101 :
+  if num % 2 == 0:
+    if num == 2:
+      print(num, " = 소수")
+    elif num % 3 == 0:
+      print(num, " = 2와 3의 배수")
+    else:
+      print(num, " = 2의 배수")
+  elif num % 3 == 0 :
+    print(num, " = 3의 배수")
+  else :
+    print(num, " = 소수")
+  num += 1    
