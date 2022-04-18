@@ -1,0 +1,118 @@
+# 1. 키보드로부터 숫자 열개를 입력받고 평균, 분산, 표준 편차 반환 함수 함수에 입력받은 숫자와 숫자들의 평균 분산 표준편차를 출력하는 코드
+# 2. 최소 최대값 반환 함수(최소 인덱스, 최대 인덱스)
+# 3. 정렬(오름, 내림) 함수
+
+
+# 1. 숫자 입력 받기
+num = list(map(int, input('숫자 열개를 띄워서 입력하세요').split()))
+
+
+# 평균 구하기
+def average(num):
+  sum = 0
+  count = 0
+  average = 0
+
+  for val in num:
+     sum = sum + val
+  while count < (int(len(num))):
+     count = count + 1
+  average = sum / count
+  return average, count; 
+
+x1, x2 = average(num)
+print("평균은 ", x1)
+
+
+# 분산 구하기
+def variance(num):
+  variancenum = 0
+  ave, count = average(num)
+
+  for val in num:
+    variancenum += (val - ave)** 2
+  variance = variancenum / count
+  
+  return variance
+
+print("분산은 ",variance(num))
+
+
+# 표준 편차 구하기
+def standard_deviation(num): 
+  var = variance(num)
+  standard_deviation = var ** 0.5
+  return standard_deviation
+
+print("표준 편차는 ", standard_deviation(num))
+
+
+# 2. 최소 최대값 반환 함수(최소 인덱스, 최대 인덱스)
+
+# 최대값, 최대 인덱스
+def big(num):
+  big = 0
+
+  for val in num:    
+    if big < val:
+      big = val
+  biggest = num.index(big)  
+  return big, biggest
+
+
+# 최소값, 최소 인덱스
+def small(num):
+  small = num[0]
+  
+  for val in num:
+    if small > val:
+      small = val
+  smallest = num.index(small)
+
+  return small, smallest 
+
+
+x1, x2 = big(num)
+y1, y2 = small(num) 
+print("큰 수는", x1)
+print("작은 수는", y1)
+print("최소인덱스는", y2 )
+print("최대인덱스는", x2)
+ 
+
+# 3. 정렬(오름, 내림) 함수
+
+# 오름
+def ascending(num):
+  swap = 0
+
+  for i in range(len(num)):
+    num1 = num[i]
+    for j in range(len(num)):
+      num2 = num[j]
+      if num1 < num2:
+         swap = num1
+         num1 = num2
+         num2 = swap
+         num[i] = num1
+         num[j] = num2 
+  return num
+
+# 내림
+def descending(num):
+  swap = 0
+
+  for i in range(len(num)):
+    num1 = num[i]
+    for j in range(len(num)):
+      num2 = num[j]
+      if num1 > num2:
+         swap = num1
+         num1 = num2
+         num2 = swap
+         num[i] = num1
+         num[j] = num2
+  return num
+
+print("오름차순은", ascending(num))
+print("내림차순은", descending(num))
